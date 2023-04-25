@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "array.h"
 
-void initArray(Array *a, const size_t initialSize) {
+void initArray(Array *a, size_t initialSize) {
     if(initialSize == 0) {
         fprintf(stderr, "Cannot initialize array with size 0\n");
         exit(EXIT_FAILURE);

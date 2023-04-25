@@ -20,7 +20,7 @@ typedef struct {
  * @param a Array structure pointer
  * @param initialSize Initial size of the array
  */
-void initArray(Array *a, const size_t initialSize);
+void initArray(Array *a, size_t initialSize);
 
 /**
  * Push a new element onto the array, automatically reallocating if necessary
