@@ -1,5 +1,16 @@
 // REFERENCES:
 // [1]: https://clang.llvm.org/extra/clang-tidy/checks/bugprone/suspicious-realloc-usage.html
+// [2]: https://stackoverflow.com/a/3536261/8916706
+
+// This entire file is pretty much courtesy of REF: [2].
+// Use this "class" when you need to construct an integer array, but you don't reasonably know
+// how long the array is going to be until runtime.
+
+/* The way this functions is entirely driven by the `push` function. When the user calls push
+   with the data to add onto the array, it checks to see if the array's size is equal to the
+   amount of used elements. If it is, it then reallocates the memory to be twice its previous
+   size, and adds the requested data onto the array. */
+// Each function has been described using jsdoc-style comments in the array.h file.
 
 #include <stdlib.h>
 #include <stdio.h>
