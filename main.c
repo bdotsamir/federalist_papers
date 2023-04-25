@@ -58,10 +58,13 @@ int main(void) {
             currentSentenceWordCount = 0;
         }
 
+        // Actually parse out the characters we want
         char *parsedWord = parsenstr(BUF, strlen(BUF));
         int wordLength = (int) strlen(parsedWord);
         push(&wordLengthArray, wordLength);
         currentSentenceWordCount++;
+
+        // then free up the parsedWord memory since it's dynamically allocated
         free(parsedWord);
     }
 
