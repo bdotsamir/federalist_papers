@@ -5,14 +5,12 @@
 #include <stdio.h>
 #include "array.h"
 
-// Defined in the header
-//typedef struct {
-//    int *array;
-//    size_t used;
-//    size_t size;
-//} Array;
-
 void initArray(Array *a, const size_t initialSize) {
+    if(initialSize == 0) {
+        fprintf(stderr, "Cannot initialize array with size 0\n");
+        exit(EXIT_FAILURE);
+    }
+
     a->array = calloc(initialSize, sizeof(int));
     if(!a->array) {
         fprintf(stderr, "Failed to allocate memory of size %lu\n", initialSize);
@@ -39,7 +37,7 @@ void push(Array *a, int data) {
             exit(EXIT_FAILURE);
         }
         a->array = p; // REF: [1]
-        fprintf(stderr, "[DEBUG] Reallocated array with new size %lu\n", a->size);
+//        fprintf(stderr, "[DEBUG] Reallocated array with new size %lu\n", a->size);
     }
 
     a->array[a->used++] = data;
