@@ -46,6 +46,7 @@ void push(Array *a, int data) {
 
 void freeArray(Array *a) {
     free(a->array);
+    a->array = NULL;
     a->size = 0;
     a->used = 0;
 }
