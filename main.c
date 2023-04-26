@@ -6,18 +6,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include "main.h"
+#include "util/strutils.h"
 
 int main(void) {
     FILE *federalist = fopen("./assets/Federalist1.txt", "r");
-    if(federalist == NULL) {
+    if (federalist == NULL) {
         fprintf(stderr, "No such file\n");
         exit(1);
     }
 
     FILE *result = fopen("./result.bin", "ab");
-    if(result == NULL) {
+    if (result == NULL) {
         fprintf(stderr, "Failed to open result file\n");
         exit(1);
     }
@@ -39,18 +39,20 @@ int main(void) {
     // This variable is reset to zero every time we encounter a "."
     int currentSentenceWordCount = 0;
 
+    int fillerWords = 0;
+
     // Start the scan!
-    while(fscanf(federalist, "%s", BUF) == 1) {
+    while (fscanf(federalist, "%s", BUF) == 1) {
 //        printf("%i BUF %s \n", currentSentenceWordCount, BUF);
 
         // If we come across the author declaration in this Federalist paper, set the corresponding variables.
-        if(strncmp(BUF, "Author", strlen("Author")) == 0) {
+        if (strncmp(BUF, "Author", strlen("Author")) == 0) {
             fscanf(federalist, "%s %s", author.firstname, author.lastname);
             printf("Author: %s %s\n", author.firstname, author.lastname);
         }
 
         // If the buffer (the word) ends with a '.', we know we've reached the end of the sentence.
-        if(endsWith(BUF, '.', strlen(BUF)) == 1) {
+        if (endsWith(BUF, '.', strlen(BUF)) == 1) {
 //            fprintf(stderr, "[DEBUG] New sentence! Previous sentence length: %i words\n\n", currentSentenceWordCount)
             // Push the current sentence word count onto the dynamic array we defined earlier
             push(&sentenceLengthArray, currentSentenceWordCount);
@@ -64,12 +66,17 @@ int main(void) {
         push(&wordLengthArray, wordLength);
         currentSentenceWordCount++;
 
+        int isFiller = isFillerWord(parsedWord, strlen(parsedWord));
+        if (isFiller == 1)
+            fillerWords++;
+
         // then free up the parsedWord memory since it's dynamically allocated
         free(parsedWord);
     }
 
     printf("\nAverage word length: %f characters\n", average(&wordLengthArray));
     printf("Average sentence word length: %f words\n", average(&sentenceLengthArray));
+    printf("Total filler words: %i\n", fillerWords);
 
     freeArray(&wordLengthArray);
     freeArray(&sentenceLengthArray);
@@ -81,38 +88,9 @@ int main(void) {
 
 float average(Array *a) {
     int sum = 0;
-    for(int i = 0; i < a->used; i++) {
+    for (int i = 0; i < a->used; i++) {
         sum += a->array[i];
     }
     float avg = (float) sum / (float) a->used;
     return avg;
-}
-
-int endsWith(const char *src, char c, size_t n) {
-    return src[n - 1] == c ? 1 : 0;
-}
-
-char *parsenstr(const char *string, size_t n) {
-    char *out = calloc(n, sizeof(char));
-    if(out == NULL) {
-        fprintf(stderr, "Failed to allocate and initialize memory of size %lu\n", n * sizeof(char));
-        exit(1);
-    }
-
-    int idx = 0;
-    for(int i = 0; i < (int) n; i++) {
-        char c = toupper(string[i]);
-        if((c >= 48 && c <= 57) || (c >= 65 && c <= 90)) { // 0-9, A-Z
-            out[idx++] = c;
-        } // REF: [1]
-    }
-
-    // ... then shrink it down to the size of the valid characters.
-    char *p = reallocarray(out, idx + 1, sizeof(char));
-    if(!p) {
-        fprintf(stderr, "Error: Failed to shrink array to size %i\n", idx + 1);
-        exit(EXIT_FAILURE);
-    }
-
-    return out;
 }
