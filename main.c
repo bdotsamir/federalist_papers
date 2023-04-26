@@ -75,6 +75,7 @@ int main(void) {
     freeArray(&sentenceLengthArray);
 
     fclose(federalist);
+    fclose(result);
     return 0;
 }
 
