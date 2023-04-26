@@ -61,3 +61,12 @@ void freeArray(Array *a) {
     a->size = 0;
     a->used = 0;
 }
+
+float average(Array *a) {
+    int sum = 0;
+    for (int i = 0; i < a->used; i++) {
+        sum += a->array[i];
+    }
+    float avg = (float) sum / (float) a->used;
+    return avg;
+}

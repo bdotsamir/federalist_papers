@@ -34,3 +34,10 @@ void push(Array *a, int data);
  * @param a Array structure pointer
  */
 void freeArray(Array *a);
+
+/**
+ * Find the average of a given Array struct
+ * @param a Pointer to an Array struct
+ * @return The average
+ */
+float average(Array *a);

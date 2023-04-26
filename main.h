@@ -20,10 +20,3 @@ typedef struct {
     float avgSentenceLength;
     float avgFillerWords;
 } FederalistPaper;
-
-/**
- * Find the average of a given Array struct
- * @param a Pointer to an Array struct
- * @return The average
- */
-float average(Array *a);
