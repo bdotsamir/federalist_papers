@@ -7,7 +7,7 @@
 
 #endif //FEDERALIST_PAPERS_MAIN_H
 
-#include "util/array.h"
+#include "util/IntArray.h"
 
 typedef struct {
     char firstname[20];

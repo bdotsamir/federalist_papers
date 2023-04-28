@@ -8,6 +8,7 @@
 #include <string.h>
 #include "main.h"
 #include "util/strutils.h"
+#include "util/LinkedList.h"
 
 int main(void) {
     FILE *federalist = fopen("./assets/Federalist1.txt", "r");
@@ -16,7 +17,7 @@ int main(void) {
         exit(1);
     }
 
-    FILE *result = fopen("./result.bin", "ab");
+    FILE *result = fopen("./result.txt", "a");
     if (result == NULL) {
         fprintf(stderr, "Failed to open result file\n");
         exit(1);
@@ -40,6 +41,10 @@ int main(void) {
     int currentSentenceWordCount = 0;
 
     int fillerWords = 0;
+
+    // at this point i'm just messing with data structures.
+    // this is for storing the filler words. why not
+    DLLNode *prevNode = NULL;
 
     // Start the scan!
     while (fscanf(federalist, "%s", BUF) == 1) {
@@ -67,8 +72,11 @@ int main(void) {
         currentSentenceWordCount++;
 
         int isFiller = isFillerWord(parsedWord, strlen(parsedWord));
-        if (isFiller == 1)
+        if (isFiller == 1) {
+            DLLNode *currentNode = newNode(prevNode, parsedWord);
+            prevNode = currentNode;
             fillerWords++;
+        }
 
         // then free up the parsedWord memory since it's dynamically allocated
         free(parsedWord);
@@ -77,6 +85,10 @@ int main(void) {
     printf("\nAverage word length: %f characters\n", average(&wordLengthArray));
     printf("Average sentence word length: %f words\n", average(&sentenceLengthArray));
     printf("Total filler words: %i\n", fillerWords);
+
+    DLLNode *headNode = getHead(prevNode);
+
+    printf("\nHead node data: %s\n", headNode->data);
 
     freeArray(&wordLengthArray);
     freeArray(&sentenceLengthArray);
