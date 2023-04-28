@@ -14,7 +14,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "array.h"
+#include "IntArray.h"
 
 void initArray(Array *a, size_t initialSize) {
     if(initialSize == 0) {
