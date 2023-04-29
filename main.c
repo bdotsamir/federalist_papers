@@ -8,7 +8,7 @@
 #include <string.h>
 #include "main.h"
 #include "util/strutils.h"
-#include "util/LinkedList.h"
+#include "util/BinaryTree.h"
 
 int main(void) {
     FILE *federalist = fopen("./assets/Federalist1.txt", "r");
@@ -42,9 +42,7 @@ int main(void) {
 
     int fillerWords = 0;
 
-    // at this point i'm just messing with data structures.
-    // this is for storing the filler words. why not
-    DLLNode *prevNode = NULL;
+    BinaryTree *rootBinaryNode;
 
     // Start the scan!
     while (fscanf(federalist, "%s", BUF) == 1) {
@@ -73,8 +71,9 @@ int main(void) {
 
         int isFiller = isFillerWord(parsedWord, strlen(parsedWord));
         if (isFiller == 1) {
-            DLLNode *currentNode = newNode(prevNode, parsedWord);
-            prevNode = currentNode;
+            BinaryTree *currentBinaryNode = insertInTree(rootBinaryNode, parsedWord);
+            rootBinaryNode = currentBinaryNode;
+
             fillerWords++;
         }
 
@@ -86,9 +85,8 @@ int main(void) {
     printf("Average sentence word length: %f words\n", average(&sentenceLengthArray));
     printf("Total filler words: %i\n", fillerWords);
 
-    DLLNode *headNode = getHead(prevNode);
-
-    printf("\nHead node data: %s\n", headNode->data);
+    printf("Traversal of binary tree:\n");
+    printinorder(rootBinaryNode);
 
     freeArray(&wordLengthArray);
     freeArray(&sentenceLengthArray);
