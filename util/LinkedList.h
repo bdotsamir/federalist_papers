@@ -46,3 +46,5 @@ void editNode(DLLNode *node, char *newData);
  * @return Pointer to the head node
  */
 DLLNode *getHead(DLLNode *node);
+
+void printList(DLLNode *node);

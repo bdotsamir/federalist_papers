@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <stdio.h>
 #include "LinkedList.h"
 
 DLLNode *newNode(DLLNode *node, char *data) {
@@ -58,9 +59,22 @@ void editNode(DLLNode *node, char *newData) {
 }
 
 DLLNode *getHead(DLLNode *node) {
+    assert(node != NULL);
+
     DLLNode *headNode = node->prev;
+    if(headNode == NULL) return node;
+
     while (headNode->prev != NULL) {
         headNode = headNode->prev;
     }
     return headNode;
+}
+
+void printList(DLLNode *node) {
+    assert(node != NULL);
+
+    DLLNode *nextNode = node->next;
+    while(nextNode->next != NULL) {
+        printf(" %s ", nextNode->data);
+    }
 }
