@@ -44,8 +44,11 @@ int main(void) {
 
     BinaryTree *rootBinaryNode;
 
+    int totalWordsInThisPaper = 0;
+
     // Start the scan!
     while (fscanf(federalist, "%s", BUF) == 1) {
+        totalWordsInThisPaper++;
 //        printf("%i BUF %s \n", currentSentenceWordCount, BUF);
 
         // If we come across the author declaration in this Federalist paper, set the corresponding variables.
@@ -85,8 +88,7 @@ int main(void) {
     printf("Average sentence word length: %f words\n", average(&sentenceLengthArray));
     printf("Total filler words: %i\n", fillerWords);
 
-    printf("Traversal of binary tree:\n");
-    printinorder(rootBinaryNode);
+    print_to_file(rootBinaryNode, result, totalWordsInThisPaper);
 
     freeArray(&wordLengthArray);
     freeArray(&sentenceLengthArray);

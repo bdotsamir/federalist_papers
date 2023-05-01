@@ -7,6 +7,8 @@
 
 #endif //FEDERALIST_PAPERS_BINARYTREE_H
 
+#include "LinkedList.h"
+
 typedef struct BinaryTree {
     struct BinaryTree *left;
     struct BinaryTree *right;
@@ -16,4 +18,6 @@ typedef struct BinaryTree {
 BinaryTree *createBinaryNode(char *string);
 BinaryTree *insertInTree(BinaryTree *root, char *string);
 int searchTree(BinaryTree *root, char *string);
-void printinorder(BinaryTree *root);
+void print_tree_in_order(BinaryTree *root);
+
+void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile);
