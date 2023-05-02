@@ -27,12 +27,12 @@ int main(void) {
     char BUF[256];
 
     // Create a dynamic array that holds the lengths of each word
-    Array wordLengthArray;
-    initArray(&wordLengthArray, 8);
+    IntArray wordLengthArray;
+    IntArray_init(&wordLengthArray, 8);
 
     // Create a dynamic array that holds the lengths of each sentence
-    Array sentenceLengthArray;
-    initArray(&sentenceLengthArray, 8);
+    IntArray sentenceLengthArray;
+    IntArray_init(&sentenceLengthArray, 8);
 
     Author author;
 
@@ -61,7 +61,7 @@ int main(void) {
         if (endsWith(BUF, '.', strlen(BUF)) == 1) {
 //            fprintf(stderr, "[DEBUG] New sentence! Previous sentence length: %i words\n\n", currentSentenceWordCount)
             // Push the current sentence word count onto the dynamic array we defined earlier
-            push(&sentenceLengthArray, currentSentenceWordCount);
+            IntArray_push(&sentenceLengthArray, currentSentenceWordCount);
             // then reset the count
             currentSentenceWordCount = 0;
         }
@@ -69,7 +69,7 @@ int main(void) {
         // Actually parse out the characters we want
         char *parsedWord = parsenstr(BUF, strlen(BUF));
         int wordLength = (int) strlen(parsedWord);
-        push(&wordLengthArray, wordLength);
+        IntArray_push(&wordLengthArray, wordLength);
         currentSentenceWordCount++;
 
         int isFiller = isFillerWord(parsedWord, strlen(parsedWord));
@@ -84,14 +84,14 @@ int main(void) {
         free(parsedWord);
     }
 
-    printf("\nAverage word length: %f characters\n", average(&wordLengthArray));
-    printf("Average sentence word length: %f words\n", average(&sentenceLengthArray));
+    printf("\nAverage word length: %.3f characters\n", IntArray_average(&wordLengthArray));
+    printf("Average sentence word length: %.3f words\n", IntArray_average(&sentenceLengthArray));
     printf("Total filler words: %i\n", fillerWords);
 
     print_to_file(rootBinaryNode, result, totalWordsInThisPaper);
 
-    freeArray(&wordLengthArray);
-    freeArray(&sentenceLengthArray);
+    IntArray_free(&wordLengthArray);
+    IntArray_free(&sentenceLengthArray);
 
     fclose(federalist);
     fclose(result);

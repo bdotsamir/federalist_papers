@@ -6,7 +6,7 @@
 // Use this "class" when you need to construct an integer array, but you don't reasonably know
 // how long the array is going to be until runtime.
 
-/* The way this functions is entirely driven by the `push` function. When the user calls push
+/* The way this functions is entirely driven by the `push` function. When the user calls IntArray_push
    with the data to add onto the array, it checks to see if the array's size is equal to the
    amount of used elements. If it is, it then reallocates the memory to be twice its previous
    size, and adds the requested data onto the array. */
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include "IntArray.h"
 
-void initArray(Array *a, size_t initialSize) {
+void IntArray_init(IntArray *a, size_t initialSize) {
     if(initialSize == 0) {
         fprintf(stderr, "Cannot initialize array with size 0\n");
         exit(EXIT_FAILURE);
@@ -32,7 +32,7 @@ void initArray(Array *a, size_t initialSize) {
     a->size = initialSize;
 }
 
-void push(Array *a, int data) {
+void IntArray_push(IntArray *a, int data) {
     // If the array has already reached its maximum size,
     if(a->size == a->used) {
         // Set the new size to itself times 2.
@@ -55,14 +55,14 @@ void push(Array *a, int data) {
 
 }
 
-void freeArray(Array *a) {
+void IntArray_free(IntArray *a) {
     free(a->array);
     a->array = NULL;
     a->size = 0;
     a->used = 0;
 }
 
-float average(Array *a) {
+float IntArray_average(IntArray *a) {
     int sum = 0;
     for (int i = 0; i < a->used; i++) {
         sum += a->array[i];

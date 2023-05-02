@@ -13,31 +13,31 @@ typedef struct {
     int *array;
     size_t used;
     size_t size;
-} Array;
+} IntArray;
 
 /**
  * Initialize a new, empty array
- * @param a Array structure pointer
+ * @param a IntArray structure pointer
  * @param initialSize Initial size of the array
  */
-void initArray(Array *a, size_t initialSize);
+void IntArray_init(IntArray *a, size_t initialSize);
 
 /**
  * Push a new element onto the array, automatically reallocating if necessary
- * @param a Array structure pointer
- * @param data Integer data to push
+ * @param a IntArray structure pointer
+ * @param data Integer data to IntArray_push
  */
-void push(Array *a, int data);
+void IntArray_push(IntArray *a, int data);
 
 /**
  * Free the memory used by the array
- * @param a Array structure pointer
+ * @param a IntArray structure pointer
  */
-void freeArray(Array *a);
+void IntArray_free(IntArray *a);
 
 /**
- * Find the average of a given Array struct
- * @param a Pointer to an Array struct
- * @return The average
+ * Find the IntArray_average of a given IntArray struct
+ * @param a Pointer to an IntArray struct
+ * @return The IntArray_average
  */
-float average(Array *a);
+float IntArray_average(IntArray *a);
