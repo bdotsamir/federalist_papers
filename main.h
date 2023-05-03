@@ -10,13 +10,14 @@
 #include "util/IntArray.h"
 
 typedef struct {
-    char firstname[20];
-    char lastname[20];
+    char first_name[20];
+    char last_name[20];
 } Author;
 
 typedef struct {
     Author author;
-    float avgWordLength;
-    float avgSentenceLength;
-    float avgFillerWords;
+    float avg_word_length;
+    float avg_sentence_length;
+    float avg_filler_words;
+    int total_words;
 } FederalistPaper;

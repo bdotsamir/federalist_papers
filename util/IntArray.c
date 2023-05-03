@@ -16,20 +16,20 @@
 #include <stdio.h>
 #include "IntArray.h"
 
-void IntArray_init(IntArray *a, size_t initialSize) {
-    if(initialSize == 0) {
+void IntArray_init(IntArray *a, size_t initial_size) {
+    if(initial_size == 0) {
         fprintf(stderr, "Cannot initialize array with size 0\n");
         exit(EXIT_FAILURE);
     }
 
-    a->array = calloc(initialSize, sizeof(int));
+    a->array = calloc(initial_size, sizeof(int));
     if(!a->array) {
-        fprintf(stderr, "Failed to allocate memory of size %lu\n", initialSize);
+        fprintf(stderr, "Failed to allocate memory of size %lu\n", initial_size);
         exit(EXIT_FAILURE);
     }
 
     a->used = 0;
-    a->size = initialSize;
+    a->size = initial_size;
 }
 
 void IntArray_push(IntArray *a, int data) {

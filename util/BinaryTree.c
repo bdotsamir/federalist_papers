@@ -11,7 +11,7 @@
 #include <assert.h>
 #include "BinaryTree.h"
 
-BinaryTree *createBinaryNode(char *string) {
+BinaryTree *create_binary_node(char *string) {
     assert(string != NULL);
 
     char *p = calloc(strlen(string), sizeof(char));
@@ -25,27 +25,27 @@ BinaryTree *createBinaryNode(char *string) {
     return newNode;
 }
 
-BinaryTree *insertInTree(BinaryTree *root, char *string) {
+BinaryTree *insert_in_tree(BinaryTree *root, char *string) {
     assert(string != NULL);
 
     //searching for the place to insert
     if (root == NULL)
-        return createBinaryNode(string);
+        return create_binary_node(string);
     else if (strcmp(string, root->data) < 1)
-        root->left = insertInTree(root->left, string);
+        root->left = insert_in_tree(root->left, string);
     else // value is smaller should be inserted to left
-        root->right = insertInTree(root->right, string);
+        root->right = insert_in_tree(root->right, string);
     return root;
 }
 
-int searchTree(BinaryTree *root, char *string) {
+int search_tree(BinaryTree *root, char *string) {
     if (strcmp(root->data, string) == 0) {
         return 1;
     } else {
         if (root->left != NULL)
-            return searchTree(root->left, string);
+            return search_tree(root->left, string);
         else if (root->right != NULL)
-            return searchTree(root->right, string);
+            return search_tree(root->right, string);
         else
             return 0;
     }
@@ -78,7 +78,7 @@ void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile)
         strcpy(previousString, root->data);
         if (strlen(previousString) != 0) {
             printf("prev word: %s, prev count %i\n", previousString, totalWords);
-            fprintf(outputFile, "%s %i %f\n",
+            fprintf(outputFile, "%s %i %.3f\n",
                     previousString, totalWords, ((float) totalWords / (float) totalWordsInThisFile) * 1000);
 
             totalWords = 0;

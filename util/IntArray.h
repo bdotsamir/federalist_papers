@@ -18,9 +18,9 @@ typedef struct {
 /**
  * Initialize a new, empty array
  * @param a IntArray structure pointer
- * @param initialSize Initial size of the array
+ * @param initial_size Initial size of the array
  */
-void IntArray_init(IntArray *a, size_t initialSize);
+void IntArray_init(IntArray *a, size_t initial_size);
 
 /**
  * Push a new element onto the array, automatically reallocating if necessary

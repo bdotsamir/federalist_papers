@@ -15,7 +15,7 @@
  * @param n Length of string
  * @return 1 = true; 0 = false
  */
-int isFillerWord(const char *src, size_t n);
+int is_filler_word(const char *src, size_t n);
 
 /**
  * Find if a given src string of n ends with c
@@ -24,7 +24,7 @@ int isFillerWord(const char *src, size_t n);
  * @param n Length of string
  * @return 1 = true; 0 = false
  */
-int endsWith(const char *src, char c, size_t n);
+int ends_with(const char *src, char c, size_t n);
 
 /**
  * Parse a string so that only A-Z and 0-9 are accepted, case insensitive

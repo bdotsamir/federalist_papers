@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "LinkedList.h"
 
-DLLNode *newNode(DLLNode *node, char *data) {
+DLLNode *new_node(DLLNode *node, char *data) {
     assert(data != NULL);
 
     char *p = calloc(strlen(data), sizeof(char));
@@ -16,20 +16,20 @@ DLLNode *newNode(DLLNode *node, char *data) {
 
     strcpy(p, data);
 
-    DLLNode *createdNode = (DLLNode *) malloc(sizeof(DLLNode));
-    assert(createdNode != NULL);
+    DLLNode *created_node = (DLLNode *) malloc(sizeof(DLLNode));
+    assert(created_node != NULL);
 
-    createdNode->data = p; // Pointer to the calloc we made earlier.
-    createdNode->next = NULL;
+    created_node->data = p; // Pointer to the calloc we made earlier.
+    created_node->next = NULL;
     if (node != NULL) { // There was a previous node!
-        createdNode->prev = node;
-        node->next = createdNode;
+        created_node->prev = node;
+        node->next = created_node;
     }
 
-    return createdNode;
+    return created_node;
 }
 
-void delNode(DLLNode *node) {
+void delete_node(DLLNode *node) {
     assert(node != NULL);
 
     // This node is in the middle of the chain
@@ -48,7 +48,7 @@ void delNode(DLLNode *node) {
     free(node);
 }
 
-void editNode(DLLNode *node, char *newData) {
+void edit_node(DLLNode *node, char *newData) {
     assert(node != NULL);
     assert(newData != NULL);
 
@@ -58,7 +58,7 @@ void editNode(DLLNode *node, char *newData) {
     node->data = newP;
 }
 
-DLLNode *getHead(DLLNode *node) {
+DLLNode *get_head(DLLNode *node) {
     assert(node != NULL);
 
     DLLNode *headNode = node->prev;
@@ -70,7 +70,7 @@ DLLNode *getHead(DLLNode *node) {
     return headNode;
 }
 
-void printList(DLLNode *node) {
+void print_list(DLLNode *node) {
     assert(node != NULL);
 
     DLLNode *nextNode = node->next;

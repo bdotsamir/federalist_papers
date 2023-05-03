@@ -9,12 +9,12 @@
 #include <math.h>
 #include "strutils.h"
 
-char fillerWords[][5] = {"of", "the", "by", "from", "to", "a", "an", "and", "for", "than"};
-int isFillerWord(const char *src, size_t n) {
+char filler_words[][5] = {"of", "the", "by", "from", "to", "a", "an", "and", "for", "than"};
+int is_filler_word(const char *src, size_t n) {
     // Create a copy of src, so we can lowercase-ify all of it
     char *p = calloc(n, sizeof(char));
     if(!p) {
-        fprintf(stderr, "Failed to allocate temporary memory for isFillerWord\n");
+        fprintf(stderr, "Failed to allocate temporary memory for is_filler_word\n");
         exit(EXIT_FAILURE);
     }
     strncpy(p, src, n);
@@ -24,8 +24,8 @@ int isFillerWord(const char *src, size_t n) {
     }
 
     int result = 0;
-    for(int i = 0; i < floor(sizeof(fillerWords) / sizeof(fillerWords[0])); i++) {
-        if(strncmp(p, fillerWords[i], n) == 0) {
+    for(int i = 0; i < floor(sizeof(filler_words) / sizeof(filler_words[0])); i++) {
+        if(strncmp(p, filler_words[i], n) == 0) {
             result = 1;
         }
     }
@@ -35,7 +35,7 @@ int isFillerWord(const char *src, size_t n) {
     return result;
 }
 
-int endsWith(const char *src, char c, size_t n) {
+int ends_with(const char *src, char c, size_t n) {
     return src[n - 1] == c ? 1 : 0;
 }
 

@@ -23,20 +23,20 @@ typedef struct DLLNode {
  * @param data Character array to put into this node
  * @return Pointer to the new node that's been created
  */
-DLLNode *newNode(DLLNode *node, char *data);
+DLLNode *new_node(DLLNode *node, char *data);
 
 /**
  * Delete a node, editing the surrounding nodes if necessary
  * @param node The node to delete
  */
-void delNode(DLLNode *node);
+void delete_node(DLLNode *node);
 
 /**
  * Edit the character array within a specified node
  * @param node The node in question
  * @param newData The new character array
  */
-void editNode(DLLNode *node, char *newData);
+void edit_node(DLLNode *node, char *newData);
 
 /**
  * Get the head node from anywhere in the list.
@@ -45,6 +45,6 @@ void editNode(DLLNode *node, char *newData);
  * @param node Entrypoint node
  * @return Pointer to the head node
  */
-DLLNode *getHead(DLLNode *node);
+DLLNode *get_head(DLLNode *node);
 
-void printList(DLLNode *node);
+void print_list(DLLNode *node);

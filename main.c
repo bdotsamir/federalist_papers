@@ -38,46 +38,46 @@ int main(void) {
 
     // Create local variable that will keep track of the number of words in the current sentence.
     // This variable is reset to zero every time we encounter a "."
-    int currentSentenceWordCount = 0;
+    int current_sentence_word_count = 0;
 
-    int fillerWords = 0;
+    int filler_words = 0;
 
-    BinaryTree *rootBinaryNode;
+    BinaryTree *root_binary_node;
 
-    int totalWordsInThisPaper = 0;
+    int total_words_in_this_paper = 0;
 
     // Start the scan!
     while (fscanf(federalist, "%s", BUF) == 1) {
-        totalWordsInThisPaper++;
-//        printf("%i BUF %s \n", currentSentenceWordCount, BUF);
+        total_words_in_this_paper++;
+//        printf("%i BUF %s \n", current_sentence_word_count, BUF);
 
         // If we come across the author declaration in this Federalist paper, set the corresponding variables.
         if (strncmp(BUF, "Author", strlen("Author")) == 0) {
-            fscanf(federalist, "%s %s", author.firstname, author.lastname);
-            printf("Author: %s %s\n", author.firstname, author.lastname);
+            fscanf(federalist, "%s %s", author.first_name, author.last_name);
+            printf("Author: %s %s\n", author.first_name, author.last_name);
         }
 
         // If the buffer (the word) ends with a '.', we know we've reached the end of the sentence.
-        if (endsWith(BUF, '.', strlen(BUF)) == 1) {
-//            fprintf(stderr, "[DEBUG] New sentence! Previous sentence length: %i words\n\n", currentSentenceWordCount)
+        if (ends_with(BUF, '.', strlen(BUF)) == 1) {
+//            fprintf(stderr, "[DEBUG] New sentence! Previous sentence length: %i words\n\n", current_sentence_word_count)
             // Push the current sentence word count onto the dynamic array we defined earlier
-            IntArray_push(&sentenceLengthArray, currentSentenceWordCount);
+            IntArray_push(&sentenceLengthArray, current_sentence_word_count);
             // then reset the count
-            currentSentenceWordCount = 0;
+            current_sentence_word_count = 0;
         }
 
         // Actually parse out the characters we want
         char *parsedWord = parsenstr(BUF, strlen(BUF));
         int wordLength = (int) strlen(parsedWord);
         IntArray_push(&wordLengthArray, wordLength);
-        currentSentenceWordCount++;
+        current_sentence_word_count++;
 
-        int isFiller = isFillerWord(parsedWord, strlen(parsedWord));
+        int isFiller = is_filler_word(parsedWord, strlen(parsedWord));
         if (isFiller == 1) {
-            BinaryTree *currentBinaryNode = insertInTree(rootBinaryNode, parsedWord);
-            rootBinaryNode = currentBinaryNode;
+            BinaryTree *currentBinaryNode = insert_in_tree(root_binary_node, parsedWord);
+            root_binary_node = currentBinaryNode;
 
-            fillerWords++;
+            filler_words++;
         }
 
         // then free up the parsedWord memory since it's dynamically allocated
@@ -86,9 +86,18 @@ int main(void) {
 
     printf("\nAverage word length: %.3f characters\n", IntArray_average(&wordLengthArray));
     printf("Average sentence word length: %.3f words\n", IntArray_average(&sentenceLengthArray));
-    printf("Total filler words: %i\n", fillerWords);
+    printf("Total filler words: %i\n", filler_words);
 
-    print_to_file(rootBinaryNode, result, totalWordsInThisPaper);
+    fprintf(result, "================================\n\n");
+    fprintf(result, "FILE %s:\n", path);
+    fprintf(result, "Author: %s %s\n\n", author.first_name, author.last_name);
+    fprintf(result, "Filler Word | Times Used | Out of 1000\n");
+    print_to_file(root_binary_node, result, total_words_in_this_paper);
+    fprintf(result, "\n");
+    fprintf(result, "Total words in this paper: %i\n", total_words_in_this_paper);
+    fprintf(result, "Average word length: %.3f\n", IntArray_average(&wordLengthArray));
+    fprintf(result, "Average sentence length: %.3f\n", IntArray_average(&sentenceLengthArray));
+    fprintf(result, "\n================================\n\n");
 
     IntArray_free(&wordLengthArray);
     IntArray_free(&sentenceLengthArray);
