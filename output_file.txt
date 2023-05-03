@@ -1,0 +1,196 @@
+File: ./assets/Federalist2.txt
+Filler Word | Times Used | Out of 1000
+A 31 18.376
+AN 26 15.412
+AND 58 34.381
+BY 14 8.299
+FOR 10 5.928
+FROM 4 2.371
+OF 85 50.385
+THAN 9 5.335
+THE 102 60.462
+TO 53 31.417
+
+
+File: ./assets/Federalist44.txt
+Filler Word | Times Used | Out of 1000
+A 45 15.390
+AN 15 5.130
+AND 83 28.386
+BY 29 9.918
+FOR 19 6.498
+FROM 9 3.078
+OF 173 59.166
+THAN 38 12.996
+THE 284 97.127
+TO 81 27.702
+
+
+File: ./assets/Federalist1.txt
+Filler Word | Times Used | Out of 1000
+A 27 16.843
+AN 10 6.238
+AND 41 25.577
+BY 14 8.734
+FOR 11 6.862
+FROM 25 15.596
+OF 93 58.016
+THAN 16 9.981
+THE 122 76.107
+TO 71 44.292
+
+
+File: ./assets/Federalist64.txt
+Filler Word | Times Used | Out of 1000
+A 34 14.580
+AN 11 4.717
+AND 98 42.024
+BY 30 12.864
+FOR 14 6.003
+FROM 12 5.146
+OF 99 42.453
+THAN 49 21.012
+THE 129 55.317
+TO 88 37.736
+
+
+File: ./assets/Federalist3.txt
+Filler Word | Times Used | Out of 1000
+A 16 10.907
+AN 5 3.408
+AND 58 39.536
+BY 24 16.360
+FOR 6 4.090
+FROM 15 10.225
+OF 64 43.626
+THAN 36 24.540
+THE 64 43.626
+TO 56 38.173
+
+
+File: ./assets/Federalist61.txt
+Filler Word | Times Used | Out of 1000
+A 40 25.757
+AN 5 3.220
+AND 25 16.098
+BY 5 3.220
+FOR 17 10.947
+FROM 8 5.151
+OF 100 64.392
+THAN 39 25.113
+THE 126 81.133
+TO 62 39.923
+
+
+File: ./assets/Federalist67.txt
+Filler Word | Times Used | Out of 1000
+A 29 17.438
+AN 13 7.817
+AND 39 23.452
+BY 16 9.621
+FOR 10 6.013
+FROM 4 2.405
+OF 112 67.348
+THAN 11 6.615
+THE 176 105.833
+TO 84 50.511
+
+
+File: ./assets/Federalist59.txt
+Filler Word | Times Used | Out of 1000
+A 57 29.488
+AN 24 12.416
+AND 30 15.520
+BY 18 9.312
+FOR 12 6.208
+FROM 12 6.208
+OF 112 57.941
+THAN 26 13.451
+THE 160 82.773
+TO 74 38.282
+
+
+File: ./assets/Federalist60.txt
+Filler Word | Times Used | Out of 1000
+A 60 26.385
+AN 11 4.837
+AND 39 17.150
+BY 20 8.795
+FOR 12 5.277
+FROM 11 4.837
+OF 145 63.764
+THAN 106 46.614
+THE 126 55.409
+TO 88 38.698
+
+
+File: ./assets/Federalist42.txt
+Filler Word | Times Used | Out of 1000
+A 57 20.306
+AN 17 6.056
+AND 90 32.063
+BY 31 11.044
+FOR 24 8.550
+FROM 10 3.563
+OF 186 66.263
+THAN 53 18.881
+THE 212 75.525
+TO 93 33.131
+
+
+File: ./assets/Federalist41.txt
+Filler Word | Times Used | Out of 1000
+A 86 24.049
+AN 26 7.271
+AND 81 22.651
+BY 31 8.669
+FOR 36 10.067
+FROM 54 15.101
+OF 172 48.098
+THAN 38 10.626
+THE 314 87.808
+TO 119 33.277
+
+
+File: ./assets/Federalist65.txt
+Filler Word | Times Used | Out of 1000
+A 47 23.005
+AN 12 5.874
+AND 36 17.621
+BY 19 9.300
+FOR 13 6.363
+FROM 12 5.874
+OF 131 64.121
+THAN 24 11.747
+THE 203 99.364
+TO 85 41.605
+
+
+File: ./assets/Federalist43.txt
+Filler Word | Times Used | Out of 1000
+A 99 28.571
+AN 20 5.772
+AND 71 20.491
+BY 47 13.564
+FOR 30 8.658
+FROM 47 13.564
+OF 184 53.102
+THAN 155 44.733
+THE 210 60.606
+TO 112 32.323
+
+
+File: ./assets/Federalist4.txt
+Filler Word | Times Used | Out of 1000
+A 20 12.085
+AN 31 18.731
+AND 61 36.858
+BY 15 9.063
+FOR 12 7.251
+FROM 8 4.834
+OF 74 44.713
+THAN 13 7.855
+THE 81 48.943
+TO 51 30.816
+
+
