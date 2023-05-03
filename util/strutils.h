@@ -32,4 +32,4 @@ int ends_with(const char *src, char c, size_t n);
  * @param n Length of the source string
  * @return New string containing only the valid characters (in all uppercase)
  */
-char *parsenstr(const char *string, size_t n);
+void *parsenstr(const char *string, size_t n, char *output);

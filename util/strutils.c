@@ -39,9 +39,8 @@ int ends_with(const char *src, char c, size_t n) {
     return src[n - 1] == c ? 1 : 0;
 }
 
-char *parsenstr(const char *string, size_t n) {
-    char *out = calloc(n, sizeof(char));
-    if(out == NULL) {
+void *parsenstr(const char *string, size_t n, char *output) {
+    if(output == NULL) {
         fprintf(stderr, "Failed to allocate and initialize memory of size %lu\n", n * sizeof(char));
         exit(1);
     }
@@ -50,16 +49,14 @@ char *parsenstr(const char *string, size_t n) {
     for(int i = 0; i < (int) n; i++) {
         char c = toupper(string[i]);
         if((c >= 48 && c <= 57) || (c >= 65 && c <= 90)) { // 0-9, A-Z
-            out[idx++] = c;
+            output[idx++] = c;
         } // REF: [1]
     }
 
     // ... then shrink it down to the size of the valid characters.
-    char *p = reallocarray(out, idx + 1, sizeof(char));
+    char *p = reallocarray(output, idx + 1, sizeof(char));
     if(!p) {
         fprintf(stderr, "Error: Failed to shrink array to size %i\n", idx + 1);
         exit(EXIT_FAILURE);
     }
-
-    return out;
 }
