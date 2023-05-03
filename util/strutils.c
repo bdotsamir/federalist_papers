@@ -53,10 +53,12 @@ void *parsenstr(const char *string, size_t n, char *output) {
         } // REF: [1]
     }
 
-    // ... then shrink it down to the size of the valid characters.
-    char *p = reallocarray(output, idx + 1, sizeof(char));
-    if(!p) {
-        fprintf(stderr, "Error: Failed to shrink array to size %i\n", idx + 1);
-        exit(EXIT_FAILURE);
-    }
+//    // ... then shrink it down to the size of the valid characters.
+//    char *p = reallocarray(output, idx + 1, sizeof(char));
+//    if(!p) {
+//        fprintf(stderr, "Error: Failed to shrink array to size %i\n", idx + 1);
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    output = p;
 }
