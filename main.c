@@ -6,22 +6,66 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
+#include <assert.h>
 #include "main.h"
 #include "util/strutils.h"
-#include "util/BinaryTree.h"
+
+FederalistPaper parse_federalist(FILE *file);
 
 int main(void) {
-    FILE *federalist = fopen("./assets/Federalist1.txt", "r");
-    if (federalist == NULL) {
-        fprintf(stderr, "No such file\n");
-        exit(1);
+
+    FILE *output_file = fopen("./output_file.txt", "w");
+    assert(output_file != NULL);
+
+    // Open the assets folder, which contains all the federalist papers
+    DIR *federalist_papers_folder = opendir("./assets");
+    assert(federalist_papers_folder != NULL);
+
+    // Get the file info (file name, namely)
+    struct dirent *file_info;
+    // Loop through all the files in the assets/ directory
+    while ((file_info = readdir(federalist_papers_folder))) {
+        // If the file name is the current directory or the previous directory, skip this iteration
+        if (strcmp(file_info->d_name, ".") == 0 || strcmp(file_info->d_name, "..") == 0) {
+            continue;
+        }
+
+        if(strcmp(file_info->d_name, "Federalist63.txt") == 0) {
+            fprintf(stderr, "[WARNING] Federalist 63 encountered. It will not have an author.\n");
+            continue;
+        }
+
+        // Actually open the federalist paper file
+        char assets[] = "./assets/";
+        char *full_file_path = strncat(assets, file_info->d_name, strlen(file_info->d_name));
+
+        printf("%s\n", full_file_path);
+        FILE *federalist = fopen(full_file_path, "r");
+        if(!federalist) {
+            fprintf(stderr, "Error opening file with name %s\n", full_file_path);
+            exit(1);
+        }
+
+        // Parse out the information from the paper
+        FederalistPaper parsed_paper = parse_federalist(federalist);
+
+        fprintf(output_file, "File: %s\n", full_file_path);
+        fprintf(output_file, "Filler Word | Times Used | Out of 1000\n");
+        print_to_file(parsed_paper.filler_words, output_file, parsed_paper.total_words);
+        fprintf(output_file, "\n\n");
+
+        // Then close the paper since we don't need it much anymore.
+        fclose(federalist);
     }
 
-    FILE *result = fopen("./result.txt", "a");
-    if (result == NULL) {
-        fprintf(stderr, "Failed to open result file\n");
-        exit(1);
-    }
+    fclose(output_file);
+    closedir(federalist_papers_folder);
+    return 0;
+}
+
+FederalistPaper parse_federalist(FILE *file) {
+    FederalistPaper federalist;
 
     // Create a buffer to hold the strings we scan in
     char BUF[256];
@@ -42,19 +86,19 @@ int main(void) {
 
     int filler_words = 0;
 
-    BinaryTree *root_binary_node;
+    BinaryTree *root_binary_node = NULL;
 
     int total_words_in_this_paper = 0;
 
     // Start the scan!
-    while (fscanf(federalist, "%s", BUF) == 1) {
+    while (fscanf(file, "%s", BUF) == 1) {
         total_words_in_this_paper++;
 //        printf("%i BUF %s \n", current_sentence_word_count, BUF);
 
         // If we come across the author declaration in this Federalist paper, set the corresponding variables.
         if (strncmp(BUF, "Author", strlen("Author")) == 0) {
-            fscanf(federalist, "%s %s", author.first_name, author.last_name);
-            printf("Author: %s %s\n", author.first_name, author.last_name);
+            fscanf(file, "%s %s", author.first_name, author.last_name);
+//            printf("Author: %s %s\n", author.first_name, author.last_name);
         }
 
         // If the buffer (the word) ends with a '.', we know we've reached the end of the sentence.
@@ -67,7 +111,8 @@ int main(void) {
         }
 
         // Actually parse out the characters we want
-        char *parsedWord = parsenstr(BUF, strlen(BUF));
+        char *parsedWord = calloc(strlen(BUF), sizeof(char));
+        parsenstr(BUF, strlen(BUF), parsedWord);
         int wordLength = (int) strlen(parsedWord);
         IntArray_push(&wordLengthArray, wordLength);
         current_sentence_word_count++;
@@ -84,25 +129,18 @@ int main(void) {
         free(parsedWord);
     }
 
-    printf("\nAverage word length: %.3f characters\n", IntArray_average(&wordLengthArray));
-    printf("Average sentence word length: %.3f words\n", IntArray_average(&sentenceLengthArray));
-    printf("Total filler words: %i\n", filler_words);
+//    printf("\nAverage word length: %.3f characters\n", IntArray_average(&wordLengthArray));
+//    printf("Average sentence word length: %.3f words\n", IntArray_average(&sentenceLengthArray));
+//    printf("Total filler words: %i\n", filler_words);
 
-    fprintf(result, "================================\n\n");
-    fprintf(result, "FILE %s:\n", path);
-    fprintf(result, "Author: %s %s\n\n", author.first_name, author.last_name);
-    fprintf(result, "Filler Word | Times Used | Out of 1000\n");
-    print_to_file(root_binary_node, result, total_words_in_this_paper);
-    fprintf(result, "\n");
-    fprintf(result, "Total words in this paper: %i\n", total_words_in_this_paper);
-    fprintf(result, "Average word length: %.3f\n", IntArray_average(&wordLengthArray));
-    fprintf(result, "Average sentence length: %.3f\n", IntArray_average(&sentenceLengthArray));
-    fprintf(result, "\n================================\n\n");
+    federalist.author = author;
+    federalist.avg_word_length = IntArray_average(&wordLengthArray);
+    federalist.avg_sentence_length = IntArray_average(&sentenceLengthArray);
+    federalist.total_words = total_words_in_this_paper;
+    federalist.filler_words = root_binary_node;
 
     IntArray_free(&wordLengthArray);
     IntArray_free(&sentenceLengthArray);
 
-    fclose(federalist);
-    fclose(result);
-    return 0;
+    return federalist;
 }

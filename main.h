@@ -8,6 +8,7 @@
 #endif //FEDERALIST_PAPERS_MAIN_H
 
 #include "util/IntArray.h"
+#include "util/BinaryTree.h"
 
 typedef struct {
     char first_name[20];
@@ -18,6 +19,6 @@ typedef struct {
     Author author;
     float avg_word_length;
     float avg_sentence_length;
-    float avg_filler_words;
+    BinaryTree *filler_words;
     int total_words;
 } FederalistPaper;
