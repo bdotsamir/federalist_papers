@@ -111,8 +111,7 @@ FederalistPaper parse_federalist(FILE *file) {
         }
 
         // Actually parse out the characters we want
-        char *parsedWord = calloc(strlen(BUF), sizeof(char));
-        parsenstr(BUF, strlen(BUF), parsedWord);
+        char *parsedWord = parsenstr(BUF, strlen(BUF));
         int wordLength = (int) strlen(parsedWord);
         IntArray_push(&wordLengthArray, wordLength);
         current_sentence_word_count++;
