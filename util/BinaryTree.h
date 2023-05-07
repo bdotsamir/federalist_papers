@@ -7,8 +7,6 @@
 
 #endif //FEDERALIST_PAPERS_BINARYTREE_H
 
-#include "LinkedList.h"
-
 typedef struct BinaryTree {
     struct BinaryTree *left;
     struct BinaryTree *right;
