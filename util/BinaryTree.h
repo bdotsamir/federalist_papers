@@ -17,7 +17,5 @@ typedef struct BinaryTree {
 
 BinaryTree *create_binary_node(char *string);
 BinaryTree *insert_in_tree(BinaryTree *root, char *string);
-int search_tree(BinaryTree *root, char *string);
-void print_tree_in_order(BinaryTree *root);
 
 void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile);

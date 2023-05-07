@@ -39,27 +39,6 @@ BinaryTree *insert_in_tree(BinaryTree *root, char *string) {
     return root;
 }
 
-int search_tree(BinaryTree *root, char *string) {
-    if (strcmp(root->data, string) == 0) {
-        return 1;
-    } else {
-        if (root->left != NULL)
-            return search_tree(root->left, string);
-        else if (root->right != NULL)
-            return search_tree(root->right, string);
-        else
-            return 0;
-    }
-}
-
-void print_tree_in_order(BinaryTree *root) {
-    if (root == NULL) return;
-
-    print_tree_in_order(root->left);
-    printf(" %s ", root->data);
-    print_tree_in_order(root->right);
-}
-
 char *previousString = NULL;
 int totalWords = 0;
 
