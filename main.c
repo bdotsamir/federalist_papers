@@ -25,7 +25,12 @@ int main(void) {
     // Get the file info (file name, namely)
     struct dirent *file_info;
     // Loop through all the files in the assets/ directory
-    while ((file_info = readdir(federalist_papers_folder))) {
+    while (1) {
+        file_info = readdir(federalist_papers_folder);
+        if(!file_info || file_info == NULL) {
+            printf("No more files!\n");
+            break;
+        }
         // If the file name is the current directory or the previous directory, skip this iteration
         if (strcmp(file_info->d_name, ".") == 0 || strcmp(file_info->d_name, "..") == 0) {
             continue;
@@ -61,7 +66,8 @@ int main(void) {
 
     fclose(output_file);
     closedir(federalist_papers_folder);
-    return 0;
+    printf("Goodbye!\n");
+    return EXIT_SUCCESS;
 }
 
 FederalistPaper parse_federalist(FILE *file) {
@@ -111,12 +117,15 @@ FederalistPaper parse_federalist(FILE *file) {
         }
 
         // Actually parse out the characters we want
-        char *parsedWord = parsenstr(BUF, strlen(BUF));
+        char *parsedWord = parsenstr(BUF);
+        if(parsedWord == NULL) {
+            continue;
+        }
         int wordLength = (int) strlen(parsedWord);
         IntArray_push(&wordLengthArray, wordLength);
         current_sentence_word_count++;
 
-        int isFiller = is_filler_word(parsedWord, strlen(parsedWord));
+        int isFiller = is_filler_word(parsedWord, wordLength);
         if (isFiller == 1) {
             BinaryTree *currentBinaryNode = insert_in_tree(root_binary_node, parsedWord);
             root_binary_node = currentBinaryNode;
