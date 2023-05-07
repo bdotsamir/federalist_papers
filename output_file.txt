@@ -112,6 +112,25 @@ Average Word Length: 4.688
 Average Sentence Length: 45.647
 ======================
 
+File: ./papers/Federalist63.txt
+Author: Unknown
+Filler Word | Times Used | Out of 1000
+A 60 19.627
+AN 19 6.215
+AND 67 21.917
+BY 51 16.683
+FOR 26 8.505
+FROM 25 8.178
+OF 169 55.283
+THAN 17 5.561
+THE 280 91.593
+TO 88 28.786
+
+Total Words: 3057
+Average Word Length: 4.892
+Average Sentence Length: 36.381
+======================
+
 File: ./papers/Federalist67.txt
 Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000

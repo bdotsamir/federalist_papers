@@ -37,8 +37,7 @@ int main(void) {
         }
 
         if(strcmp(file_info->d_name, "Federalist63.txt") == 0) {
-            fprintf(stderr, "[WARNING] Federalist 63 encountered. It will not have an author.\n");
-            continue;
+            fprintf(stderr, "[WARNING] Federalist 63 encountered. It will have the wrong author.\n");
         }
 
         // Actually open the federalist paper file
