@@ -14,9 +14,10 @@
 BinaryTree *create_binary_node(char *string) {
     assert(string != NULL);
 
-    char *p = calloc(strlen(string), sizeof(char));
+    size_t len = strlen(string);
+    char *p = calloc(len + 1, sizeof(char));
     assert(p != NULL);
-    strcpy(p, string);
+    strncpy(p, string, len);
 
     BinaryTree *newNode = malloc(sizeof(BinaryTree));
     newNode->left = NULL;
