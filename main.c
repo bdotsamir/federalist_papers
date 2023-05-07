@@ -18,13 +18,13 @@ int main(void) {
     FILE *output_file = fopen("./output_file.txt", "w");
     assert(output_file != NULL);
 
-    // Open the assets folder, which contains all the federalist papers
-    DIR *federalist_papers_folder = opendir("./assets");
+    // Open the papers folder, which contains all the federalist papers
+    DIR *federalist_papers_folder = opendir("./papers");
     assert(federalist_papers_folder != NULL);
 
     // Get the file info (file name, namely)
     struct dirent *file_info;
-    // Loop through all the files in the assets/ directory
+    // Loop through all the files in the papers/ directory
     while (1) {
         file_info = readdir(federalist_papers_folder);
         if(!file_info || file_info == NULL) {
@@ -42,20 +42,22 @@ int main(void) {
         }
 
         // Actually open the federalist paper file
-        char assets[] = "./assets/";
-        char *full_file_path = strncat(assets, file_info->d_name, strlen(file_info->d_name));
+        char assetsLiteral[] = "./papers/";
+        char *assets = calloc(strlen(assetsLiteral) + strlen(file_info->d_name) + 1, sizeof(char));
+        strncat(assets, assetsLiteral, strlen(assetsLiteral));
+        strncat(assets, file_info->d_name, strlen(file_info->d_name));
 
-        printf("%s\n", full_file_path);
-        FILE *federalist = fopen(full_file_path, "r");
+        printf("file %s\n", assets);
+        FILE *federalist = fopen(assets, "r");
         if(!federalist) {
-            fprintf(stderr, "Error opening file with name %s\n", full_file_path);
+            fprintf(stderr, "Error opening file with name %s\n", assets);
             exit(1);
         }
 
         // Parse out the information from the paper
         FederalistPaper parsed_paper = parse_federalist(federalist);
 
-        fprintf(output_file, "File: %s\n", full_file_path);
+        fprintf(output_file, "File: %s\n", assets);
         fprintf(output_file, "Filler Word | Times Used | Out of 1000\n");
         print_to_file(parsed_paper.filler_words, output_file, parsed_paper.total_words);
         fprintf(output_file, "\n\n");

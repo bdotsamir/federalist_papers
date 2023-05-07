@@ -8,7 +8,7 @@ const {
     readFileSync
 } = require("fs");
 
-const file = readFileSync("../assets/Federalist1.txt").toString();
+const file = readFileSync("../papers/Federalist1.txt").toString();
 
 let everyWord = file.split("Author: Alexander Hamilton")[1].split(" ").map(g => g.trim());
 everyWord = everyWord.map(g => g.replaceAll("\n", " "));

@@ -1,4 +1,4 @@
-File: ./assets/Federalist2.txt
+File: ./papers/Federalist2.txt
 Filler Word | Times Used | Out of 1000
 A 31 18.376
 AN 26 15.412
@@ -12,7 +12,7 @@ THE 102 60.462
 TO 53 31.417
 
 
-File: ./assets/Federalist44.txt
+File: ./papers/Federalist44.txt
 Filler Word | Times Used | Out of 1000
 A 45 15.390
 AN 15 5.130
@@ -26,7 +26,7 @@ THE 284 97.127
 TO 81 27.702
 
 
-File: ./assets/Federalist1.txt
+File: ./papers/Federalist1.txt
 Filler Word | Times Used | Out of 1000
 A 27 16.843
 AN 10 6.238
@@ -40,7 +40,7 @@ THE 122 76.107
 TO 71 44.292
 
 
-File: ./assets/Federalist64.txt
+File: ./papers/Federalist64.txt
 Filler Word | Times Used | Out of 1000
 A 34 14.580
 AN 11 4.717
@@ -54,7 +54,7 @@ THE 129 55.317
 TO 88 37.736
 
 
-File: ./assets/Federalist3.txt
+File: ./papers/Federalist3.txt
 Filler Word | Times Used | Out of 1000
 A 16 10.907
 AN 5 3.408
@@ -68,7 +68,7 @@ THE 64 43.626
 TO 56 38.173
 
 
-File: ./assets/Federalist61.txt
+File: ./papers/Federalist61.txt
 Filler Word | Times Used | Out of 1000
 A 40 25.757
 AN 5 3.220
@@ -82,9 +82,9 @@ THE 126 81.133
 TO 62 39.923
 
 
-File: ./assets/Federalist67.txt
+File: ./papers/Federalist67.txt
 Filler Word | Times Used | Out of 1000
-A 29 17.438
+A 28 16.837
 AN 13 7.817
 AND 39 23.452
 BY 16 9.621
@@ -96,7 +96,7 @@ THE 176 105.833
 TO 84 50.511
 
 
-File: ./assets/Federalist59.txt
+File: ./papers/Federalist59.txt
 Filler Word | Times Used | Out of 1000
 A 57 29.488
 AN 24 12.416
@@ -110,9 +110,9 @@ THE 160 82.773
 TO 74 38.282
 
 
-File: ./assets/Federalist60.txt
+File: ./papers/Federalist60.txt
 Filler Word | Times Used | Out of 1000
-A 60 26.385
+A 59 25.945
 AN 11 4.837
 AND 39 17.150
 BY 20 8.795
@@ -124,7 +124,7 @@ THE 126 55.409
 TO 88 38.698
 
 
-File: ./assets/Federalist42.txt
+File: ./papers/Federalist42.txt
 Filler Word | Times Used | Out of 1000
 A 57 20.306
 AN 17 6.056
@@ -138,9 +138,9 @@ THE 212 75.525
 TO 93 33.131
 
 
-File: ./assets/Federalist41.txt
+File: ./papers/Federalist41.txt
 Filler Word | Times Used | Out of 1000
-A 86 24.049
+A 85 23.770
 AN 26 7.271
 AND 81 22.651
 BY 31 8.669
@@ -152,7 +152,7 @@ THE 314 87.808
 TO 119 33.277
 
 
-File: ./assets/Federalist65.txt
+File: ./papers/Federalist65.txt
 Filler Word | Times Used | Out of 1000
 A 47 23.005
 AN 12 5.874
@@ -166,9 +166,9 @@ THE 203 99.364
 TO 85 41.605
 
 
-File: ./assets/Federalist43.txt
+File: ./papers/Federalist43.txt
 Filler Word | Times Used | Out of 1000
-A 99 28.571
+A 96 27.706
 AN 20 5.772
 AND 71 20.491
 BY 47 13.564
@@ -180,7 +180,7 @@ THE 210 60.606
 TO 112 32.323
 
 
-File: ./assets/Federalist4.txt
+File: ./papers/Federalist4.txt
 Filler Word | Times Used | Out of 1000
 A 20 12.085
 AN 31 18.731
