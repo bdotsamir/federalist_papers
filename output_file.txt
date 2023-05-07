@@ -1,4 +1,5 @@
 File: ./papers/Federalist2.txt
+Author: John Jay
 Filler Word | Times Used | Out of 1000
 A 31 18.376
 AN 26 15.412
@@ -11,8 +12,13 @@ THAN 9 5.335
 THE 102 60.462
 TO 53 31.417
 
+Total Words: 1687
+Average Word Length: 4.918
+Average Sentence Length: 40.143
+======================
 
 File: ./papers/Federalist44.txt
+Author: James Madison
 Filler Word | Times Used | Out of 1000
 A 45 15.390
 AN 15 5.130
@@ -25,8 +31,13 @@ THAN 38 12.996
 THE 284 97.127
 TO 81 27.702
 
+Total Words: 2924
+Average Word Length: 4.894
+Average Sentence Length: 37.961
+======================
 
 File: ./papers/Federalist1.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 27 16.843
 AN 10 6.238
@@ -39,8 +50,13 @@ THAN 16 9.981
 THE 122 76.107
 TO 71 44.292
 
+Total Words: 1603
+Average Word Length: 4.764
+Average Sentence Length: 32.694
+======================
 
 File: ./papers/Federalist64.txt
+Author: John Jay
 Filler Word | Times Used | Out of 1000
 A 34 14.580
 AN 11 4.717
@@ -53,8 +69,13 @@ THAN 49 21.012
 THE 129 55.317
 TO 88 37.736
 
+Total Words: 2332
+Average Word Length: 4.730
+Average Sentence Length: 40.895
+======================
 
 File: ./papers/Federalist3.txt
+Author: John Jay
 Filler Word | Times Used | Out of 1000
 A 16 10.907
 AN 5 3.408
@@ -67,8 +88,13 @@ THAN 36 24.540
 THE 64 43.626
 TO 56 38.173
 
+Total Words: 1467
+Average Word Length: 4.914
+Average Sentence Length: 37.590
+======================
 
 File: ./papers/Federalist61.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 40 25.757
 AN 5 3.220
@@ -81,8 +107,13 @@ THAN 39 25.113
 THE 126 81.133
 TO 62 39.923
 
+Total Words: 1553
+Average Word Length: 4.688
+Average Sentence Length: 45.647
+======================
 
 File: ./papers/Federalist67.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 28 16.837
 AN 13 7.817
@@ -95,8 +126,13 @@ THAN 11 6.615
 THE 176 105.833
 TO 84 50.511
 
+Total Words: 1663
+Average Word Length: 4.881
+Average Sentence Length: 42.590
+======================
 
 File: ./papers/Federalist59.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 57 29.488
 AN 24 12.416
@@ -109,8 +145,13 @@ THAN 26 13.451
 THE 160 82.773
 TO 74 38.282
 
+Total Words: 1933
+Average Word Length: 4.750
+Average Sentence Length: 41.106
+======================
 
 File: ./papers/Federalist60.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 59 25.945
 AN 11 4.837
@@ -123,8 +164,13 @@ THAN 106 46.614
 THE 126 55.409
 TO 88 38.698
 
+Total Words: 2274
+Average Word Length: 4.779
+Average Sentence Length: 46.367
+======================
 
 File: ./papers/Federalist42.txt
+Author: James Madison
 Filler Word | Times Used | Out of 1000
 A 57 20.306
 AN 17 6.056
@@ -137,8 +183,13 @@ THAN 53 18.881
 THE 212 75.525
 TO 93 33.131
 
+Total Words: 2807
+Average Word Length: 4.949
+Average Sentence Length: 37.413
+======================
 
 File: ./papers/Federalist41.txt
+Author: James Madison
 Filler Word | Times Used | Out of 1000
 A 85 23.770
 AN 26 7.271
@@ -151,8 +202,13 @@ THAN 38 10.626
 THE 314 87.808
 TO 119 33.277
 
+Total Words: 3576
+Average Word Length: 4.811
+Average Sentence Length: 30.288
+======================
 
 File: ./papers/Federalist65.txt
+Author: Alexander Hamilton
 Filler Word | Times Used | Out of 1000
 A 47 23.005
 AN 12 5.874
@@ -165,8 +221,13 @@ THAN 24 11.747
 THE 203 99.364
 TO 85 41.605
 
+Total Words: 2043
+Average Word Length: 4.749
+Average Sentence Length: 40.840
+======================
 
 File: ./papers/Federalist43.txt
+Author: James Madison
 Filler Word | Times Used | Out of 1000
 A 96 27.706
 AN 20 5.772
@@ -179,8 +240,13 @@ THAN 155 44.733
 THE 210 60.606
 TO 112 32.323
 
+Total Words: 3465
+Average Word Length: 4.886
+Average Sentence Length: 32.046
+======================
 
 File: ./papers/Federalist4.txt
+Author: John Jay
 Filler Word | Times Used | Out of 1000
 A 20 12.085
 AN 31 18.731
@@ -193,4 +259,8 @@ THAN 13 7.855
 THE 81 48.943
 TO 51 30.816
 
+Total Words: 1655
+Average Word Length: 4.812
+Average Sentence Length: 47.257
+======================
 

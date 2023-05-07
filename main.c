@@ -58,8 +58,14 @@ int main(void) {
         FederalistPaper parsed_paper = parse_federalist(federalist);
 
         fprintf(output_file, "File: %s\n", assets);
+        fprintf(output_file, "Author: %s %s\n", parsed_paper.author.first_name, parsed_paper.author.last_name);
         fprintf(output_file, "Filler Word | Times Used | Out of 1000\n");
         print_to_file(parsed_paper.filler_words, output_file, parsed_paper.total_words);
+        fprintf(output_file, "\n");
+        fprintf(output_file, "Total Words: %i\n", parsed_paper.total_words);
+        fprintf(output_file, "Average Word Length: %.3f\n", parsed_paper.avg_word_length);
+        fprintf(output_file, "Average Sentence Length: %.3f\n", parsed_paper.avg_sentence_length);
+        fprintf(output_file, "======================");
         fprintf(output_file, "\n\n");
 
         // Then close the paper since we don't need it much anymore.
