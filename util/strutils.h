@@ -29,7 +29,6 @@ int ends_with(const char *src, char c, size_t n);
 /**
  * Parse a string so that only A-Z and 0-9 are accepted, case insensitive
  * @param string Source string to parse
- * @param n Length of the source string
  * @return New string containing only the valid characters (in all uppercase)
  */
-char *parsenstr(const char *string, size_t n);
+char *parsenstr(const char *string);

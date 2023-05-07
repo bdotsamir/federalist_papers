@@ -7,6 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <assert.h>
 #include "strutils.h"
 
 char filler_words[][5] = {"of", "the", "by", "from", "to", "a", "an", "and", "for", "than"};
@@ -24,7 +25,7 @@ int is_filler_word(const char *src, size_t n) {
     }
 
     int result = 0;
-    for(int i = 0; i < floor(sizeof(filler_words) / sizeof(filler_words[0])); i++) {
+    for(int i = 0; i < sizeof(filler_words) / sizeof(filler_words[0]); i++) {
         if(strncmp(p, filler_words[i], n) == 0) {
             result = 1;
         }
@@ -39,7 +40,10 @@ int ends_with(const char *src, char c, size_t n) {
     return src[n - 1] == c ? 1 : 0;
 }
 
-char *parsenstr(const char *string, size_t n) {
+char *parsenstr(const char *string) {
+    size_t n = strlen(string);
+    assert(string != NULL && n > 0);
+
     char *output = calloc(n, sizeof(char));
     if(output == NULL) {
         fprintf(stderr, "Failed to allocate and initialize memory of size %lu\n", n * sizeof(char));
@@ -56,9 +60,9 @@ char *parsenstr(const char *string, size_t n) {
 
     // ... then shrink it down to the size of the valid characters.
     char *p = reallocarray(output, idx + 1, sizeof(char));
-    if(!p) {
-        fprintf(stderr, "Error: Failed to shrink array to size %i\n", idx + 1);
-        exit(EXIT_FAILURE);
+    if(p == NULL || strlen(p) == 0) {
+        free(p);
+        return NULL;
     }
 
     return p;
