@@ -64,7 +64,7 @@ void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile)
     if (strcmp(previousString, root->data) != 0) {
         strcpy(previousString, root->data);
         if (strlen(previousString) != 0) {
-            printf("prev word: %s, prev count %i\n", previousString, totalWords);
+//            printf("prev word: %s, prev count %i\n", previousString, totalWords);
             fprintf(outputFile, "%s %i %.3f\n",
                     previousString, totalWords, ((float) totalWords / (float) totalWordsInThisFile) * 1000);
 
