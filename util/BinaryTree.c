@@ -60,7 +60,7 @@ void print_tree_in_order(BinaryTree *root) {
     print_tree_in_order(root->right);
 }
 
-char *previousString;
+char *previousString = NULL;
 int totalWords = 0;
 
 void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile) {
