@@ -68,7 +68,14 @@ void print_to_file(BinaryTree *root, FILE *outputFile, int totalWordsInThisFile)
     // wow this is a massive shit on performance,
     // especially because this function is recursive.
     if (previousString == NULL) {
-        previousString = calloc(5, sizeof(char));
+        char *p = calloc(5, sizeof(char));
+        assert(p != NULL);
+        previousString = p;
+    } else {
+        free(previousString);
+        char *p = calloc(5, sizeof(char));
+        assert(p != NULL);
+        previousString = p;
     }
 
     totalWords++;
